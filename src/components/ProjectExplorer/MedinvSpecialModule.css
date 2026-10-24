@@ -1,0 +1,427 @@
+/* MEDINV Dedicated Module Stylesheet */
+
+.medinv-module-container {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 1rem 1.25rem 3rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Safety banner */
+.medinv-safety-banner {
+  background: rgba(255, 180, 92, 0.08);
+  border: 1px solid rgba(255, 180, 92, 0.35);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.safety-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  color: var(--gold-accent);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.safety-desc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* Hero card */
+.medinv-hero-card {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.medinv-header-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.medinv-title-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0.25rem 0;
+  flex-wrap: wrap;
+}
+
+.medinv-title-row h2 {
+  font-size: 1.8rem;
+  letter-spacing: 0.02em;
+}
+
+.status-badge {
+  font-size: 0.72rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 3px;
+  background: rgba(86, 231, 255, 0.1);
+  border: 1px solid var(--reactor-cyan);
+  color: var(--reactor-cyan);
+}
+
+.medinv-subtitle {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.medinv-overview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.overview-item {
+  padding: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.overview-tag {
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+}
+
+.overview-item p {
+  font-size: 0.84rem;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+/* Simulation Dashboard */
+.medinv-dashboard-box {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.dash-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.25rem;
+  background: rgba(7, 10, 16, 0.6);
+  border-bottom: 1px solid var(--border-subtle);
+  font-size: 0.75rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.dash-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dash-content-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  align-items: center;
+}
+
+/* Rotary Wheel */
+.rotary-visualizer-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.rotary-wheel-wrap {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rotary-svg {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.spinning-step {
+  transform: rotate(25.7deg);
+}
+
+.rotary-center-status {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+}
+
+.wheel-slot-num {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--reactor-cyan);
+}
+
+.wheel-label {
+  font-size: 0.62rem;
+  color: var(--text-dim);
+}
+
+.rotary-control-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+/* Telemetry Gauges */
+.telemetry-gauges-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.gauge-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.telemetry-card {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.telemetry-value {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.telemetry-sub {
+  font-size: 0.68rem;
+  color: var(--text-dim);
+}
+
+.stock-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+}
+
+.stock-track {
+  width: 100%;
+  height: 8px;
+  background: rgba(7, 10, 16, 0.6);
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  margin: 0.3rem 0;
+}
+
+.stock-fill {
+  height: 100%;
+  transition: width 0.4s ease;
+}
+
+.stock-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.68rem;
+  color: var(--text-dim);
+}
+
+.btn-restock {
+  background: transparent;
+  border: 1px solid var(--gold-accent);
+  color: var(--gold-accent);
+  padding: 0.15rem 0.45rem;
+  border-radius: 3px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.68rem;
+}
+
+.iot-stats-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.iot-stat-line {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Telemetry Logs */
+.telemetry-log-box {
+  background: rgba(7, 10, 16, 0.75);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.log-title {
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+}
+
+.logs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.log-row {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.72rem;
+}
+
+.log-time {
+  color: var(--reactor-cyan);
+}
+.log-msg {
+  color: var(--text-primary);
+}
+
+/* Architecture Workflow Section */
+.medinv-arch-section {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.section-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+.arch-workflow-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.flow-card {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.flow-step-tag {
+  font-size: 0.68rem;
+  color: var(--reactor-cyan);
+}
+
+.flow-step-title {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+.flow-step-desc {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* Bottom Grid */
+.medinv-bottom-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.hardware-specs-card,
+.future-roadmap-card {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.specs-table {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.spec-table-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  padding: 0.35rem 0;
+  border-bottom: 1px dashed var(--border-subtle);
+  gap: 1rem;
+}
+
+.spec-k {
+  color: var(--text-dim);
+}
+
+.spec-v {
+  color: var(--reactor-cyan);
+  text-align: right;
+}
+
+.future-bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.future-bullet-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+@media (max-width: 950px) {
+  .dash-content-grid {
+    grid-template-columns: 1fr;
+  }
+  .gauge-row {
+    grid-template-columns: 1fr;
+  }
+  .medinv-overview-grid {
+    grid-template-columns: 1fr;
+  }
+  .medinv-bottom-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,304 @@
+/* ==========================================================================
+   AURELION // Engineering Command Center Design System
+   Obsidian & Titanium Palette | High-Precision Micro-Interactions
+   ========================================================================== */
+
+:root {
+  /* Core Engineering Palette */
+  --bg-obsidian: #070A10;
+  --bg-titanium: #111823;
+  --bg-panel: rgba(17, 24, 35, 0.85);
+  --bg-panel-elevated: rgba(22, 32, 47, 0.9);
+  --bg-glass: rgba(17, 24, 35, 0.65);
+
+  --reactor-cyan: #56E7FF;
+  --reactor-cyan-glow: rgba(86, 231, 255, 0.35);
+  --reactor-cyan-soft: rgba(86, 231, 255, 0.12);
+
+  --electric-blue: #4C8DFF;
+  --electric-blue-glow: rgba(76, 141, 255, 0.35);
+
+  --gold-accent: #FFB45C;
+  --gold-accent-glow: rgba(255, 180, 92, 0.3);
+
+  --text-primary: #EAF4FF;
+  --text-muted: #91A4BA;
+  --text-dim: #5A6D85;
+
+  --status-success: #63F2B2;
+  --status-warning: #FFB45C;
+  --status-danger: #FF5C5C;
+
+  --border-subtle: rgba(86, 231, 255, 0.14);
+  --border-bright: rgba(86, 231, 255, 0.35);
+  --border-glow: 0 0 15px rgba(86, 231, 255, 0.25);
+
+  --font-sans: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Share Tech Mono', monospace;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Light Mode Overrides */
+.theme-light {
+  --bg-obsidian: #F3F6FA;
+  --bg-titanium: #FFFFFF;
+  --bg-panel: rgba(255, 255, 255, 0.92);
+  --bg-panel-elevated: #FFFFFF;
+  --bg-glass: rgba(255, 255, 255, 0.85);
+
+  --reactor-cyan: #007799;
+  --reactor-cyan-glow: rgba(0, 119, 153, 0.2);
+  --reactor-cyan-soft: rgba(0, 119, 153, 0.08);
+
+  --electric-blue: #1D58BD;
+  --electric-blue-glow: rgba(29, 88, 189, 0.2);
+
+  --gold-accent: #C77700;
+  --gold-accent-glow: rgba(199, 119, 0, 0.2);
+
+  --text-primary: #0B131F;
+  --text-muted: #485A70;
+  --text-dim: #7C8FA3;
+
+  --border-subtle: rgba(0, 119, 153, 0.18);
+  --border-bright: rgba(0, 119, 153, 0.4);
+  --border-glow: 0 0 12px rgba(0, 119, 153, 0.15);
+}
+
+/* Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg-obsidian);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Engineering Blueprint & PCB Grid Overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: 
+    linear-gradient(to right, rgba(86, 231, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(86, 231, 255, 0.025) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.theme-light body::before {
+  background-image: 
+    linear-gradient(to right, rgba(0, 119, 153, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 119, 153, 0.035) 1px, transparent 1px);
+}
+
+/* Custom Sleek Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-obsidian);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(86, 231, 255, 0.25);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--reactor-cyan);
+}
+
+/* Typography Helpers */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  font-weight: 700;
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+.telemetry-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--reactor-cyan);
+}
+
+/* Tactical Panel Utilities */
+.tactical-panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  position: relative;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.tactical-panel:hover {
+  border-color: var(--border-bright);
+}
+
+.tactical-panel-corner::before,
+.tactical-panel-corner::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  pointer-events: none;
+  border-color: var(--reactor-cyan);
+}
+.tactical-panel-corner::before {
+  top: -1px;
+  left: -1px;
+  border-top: 2px solid var(--reactor-cyan);
+  border-left: 2px solid var(--reactor-cyan);
+}
+.tactical-panel-corner::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 2px solid var(--reactor-cyan);
+  border-right: 2px solid var(--reactor-cyan);
+}
+
+/* Futuristic Buttons */
+.btn-tactical {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.1rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--reactor-cyan);
+  background: var(--reactor-cyan-soft);
+  border: 1px solid var(--border-bright);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+
+.btn-tactical:hover {
+  background: var(--reactor-cyan);
+  color: #070A10;
+  box-shadow: 0 0 16px var(--reactor-cyan-glow);
+}
+
+.btn-tactical:focus-visible {
+  outline: 2px solid var(--reactor-cyan);
+  outline-offset: 2px;
+}
+
+.btn-tactical-gold {
+  color: var(--gold-accent);
+  border-color: rgba(255, 180, 92, 0.4);
+  background: rgba(255, 180, 92, 0.1);
+}
+.btn-tactical-gold:hover {
+  background: var(--gold-accent);
+  color: #070A10;
+  box-shadow: 0 0 16px var(--gold-accent-glow);
+}
+
+.btn-tactical-outline {
+  color: var(--text-primary);
+  border-color: var(--border-subtle);
+  background: transparent;
+}
+.btn-tactical-outline:hover {
+  border-color: var(--border-bright);
+  background: rgba(86, 231, 255, 0.06);
+  color: var(--reactor-cyan);
+}
+
+/* Indicator Lights */
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.status-dot.online {
+  background: var(--status-success);
+  box-shadow: 0 0 8px rgba(99, 242, 178, 0.6);
+  animation: pulseLight 2s infinite ease-in-out;
+}
+.status-dot.warning {
+  background: var(--status-warning);
+  box-shadow: 0 0 8px rgba(255, 180, 92, 0.6);
+}
+.status-dot.danger {
+  background: var(--status-danger);
+  box-shadow: 0 0 8px rgba(255, 92, 92, 0.6);
+}
+
+@keyframes pulseLight {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.9); }
+}
+
+/* Concentric Rotation Keyframes */
+@keyframes spinClockwise {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes spinCounterClockwise {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+@keyframes reactorPulseCore {
+  0%, 100% { transform: scale(1); opacity: 0.85; filter: drop-shadow(0 0 12px var(--reactor-cyan)); }
+  50% { transform: scale(1.05); opacity: 1; filter: drop-shadow(0 0 24px var(--reactor-cyan)); }
+}
+
+/* Reduced Motion Safety */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.reduced-motion *,
+.reduced-motion *::before,
+.reduced-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}

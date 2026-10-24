@@ -1,0 +1,686 @@
+/* ==========================================================================
+   AURELION // Cinematic Powered-Suit HUD & Holographic Navigation Hub
+   ========================================================================== */
+
+.cinematic-hud-wrapper {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #030508;
+  z-index: 9999;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px;
+  user-select: none;
+  font-family: var(--font-sans);
+}
+
+/* Background Engineering Grid & Scanlines */
+.suit-hud-backdrop {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(86, 231, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(86, 231, 255, 0.035) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.suit-ambient-radial {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(86, 231, 255, 0.08) 0%, rgba(7, 10, 16, 0.95) 70%, #030508 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.suit-hud-scanline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent 50%,
+    rgba(0, 0, 0, 0.25) 51%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.6;
+}
+
+/* Visor Curvature & Lens Framing Brackets */
+.suit-hud-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.visor-bracket {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  border-color: rgba(86, 231, 255, 0.4);
+  pointer-events: none;
+}
+.visor-bracket.top-left {
+  top: 24px;
+  left: 24px;
+  border-top: 2px solid var(--reactor-cyan);
+  border-left: 2px solid var(--reactor-cyan);
+  border-top-left-radius: 8px;
+}
+.visor-bracket.top-right {
+  top: 24px;
+  right: 24px;
+  border-top: 2px solid var(--reactor-cyan);
+  border-right: 2px solid var(--reactor-cyan);
+  border-top-right-radius: 8px;
+}
+.visor-bracket.bottom-left {
+  bottom: 24px;
+  left: 24px;
+  border-bottom: 2px solid var(--reactor-cyan);
+  border-left: 2px solid var(--reactor-cyan);
+  border-bottom-left-radius: 8px;
+}
+.visor-bracket.bottom-right {
+  bottom: 24px;
+  right: 24px;
+  border-bottom: 2px solid var(--reactor-cyan);
+  border-right: 2px solid var(--reactor-cyan);
+  border-bottom-right-radius: 8px;
+}
+
+/* Subtle Curved Horizon Arc */
+.visor-horizon-arc {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  right: 5%;
+  height: 1px;
+  background: linear-gradient(
+    90deg, 
+    transparent 0%, 
+    rgba(86, 231, 255, 0.15) 20%, 
+    rgba(86, 231, 255, 0.25) 50%, 
+    rgba(86, 231, 255, 0.15) 80%, 
+    transparent 100%
+  );
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/* Top Telemetry Bar */
+.suit-top-telemetry {
+  position: absolute;
+  top: 28px;
+  left: 80px;
+  right: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: auto;
+  z-index: 30;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+}
+
+.hud-tele-left {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  background: rgba(17, 24, 35, 0.75);
+  border: 1px solid var(--border-subtle);
+  padding: 0.45rem 0.95rem;
+  border-radius: var(--radius-sm);
+  backdrop-filter: blur(10px);
+}
+
+.suit-brand-title {
+  font-weight: 700;
+  color: var(--reactor-cyan);
+}
+.suit-operator-tag {
+  color: var(--text-primary);
+}
+.suit-acad-tag {
+  color: var(--gold-accent);
+}
+.hud-sep {
+  color: var(--text-dim);
+}
+
+.hud-tele-right {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.btn-hud-control {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.85rem;
+  background: rgba(17, 24, 35, 0.75);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: all var(--transition-fast);
+}
+
+.btn-hud-control:hover,
+.btn-hud-control.active {
+  border-color: var(--reactor-cyan);
+  color: var(--reactor-cyan);
+  background: var(--reactor-cyan-soft);
+}
+
+.btn-hud-control.active-voice {
+  border-color: var(--status-success);
+  color: var(--status-success);
+  background: rgba(99, 242, 178, 0.1);
+}
+
+.btn-hud-skip {
+  border-color: rgba(255, 180, 92, 0.4);
+  color: var(--gold-accent);
+  background: rgba(255, 180, 92, 0.1);
+}
+.btn-hud-skip:hover {
+  background: var(--gold-accent);
+  color: #030508;
+  box-shadow: 0 0 16px rgba(255, 180, 92, 0.4);
+}
+
+/* Central Reticle */
+.suit-central-reticle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 280px;
+  height: 280px;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.reticle-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px dashed rgba(86, 231, 255, 0.25);
+}
+.ring-outer {
+  width: 260px;
+  height: 260px;
+  animation: spinClockwise 40s linear infinite;
+}
+.ring-inner {
+  width: 190px;
+  height: 190px;
+  border: 1px solid rgba(86, 231, 255, 0.15);
+  animation: spinCounterClockwise 25s linear infinite;
+}
+
+.reticle-crosshair {
+  position: absolute;
+  background: rgba(86, 231, 255, 0.35);
+}
+.ch-x {
+  width: 290px;
+  height: 1px;
+}
+.ch-y {
+  width: 1px;
+  height: 290px;
+}
+
+.reticle-coords {
+  position: absolute;
+  bottom: -32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.65rem;
+  color: var(--text-dim);
+}
+
+.reticle-target-tag {
+  color: var(--reactor-cyan);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+/* Boot Init Readout (Phases 1-3) */
+.suit-init-readout {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  background: rgba(7, 10, 16, 0.85);
+  border: 1px solid var(--border-subtle);
+  border-left: 3px solid var(--reactor-cyan);
+  padding: 0.85rem 1.15rem;
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+  z-index: 30;
+  max-width: 440px;
+}
+
+.readout-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-dim);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+}
+
+.readout-line {
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+/* Destination Ticker (Phase 4) */
+.suit-destination-ticker {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(17, 24, 35, 0.85);
+  border: 1px solid var(--border-bright);
+  padding: 0.5rem 1.25rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  color: var(--reactor-cyan);
+  z-index: 30;
+  box-shadow: 0 0 20px rgba(86, 231, 255, 0.15);
+  pointer-events: none;
+}
+
+/* Central Reactor Core Positioning */
+.suit-central-reactor-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 520px;
+  height: 520px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.suit-reactor-container {
+  width: 100%;
+  height: 100%;
+}
+
+.suit-reactor-vector-wrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.suit-vector-reactor-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Boot Emblem Reveal (Phase 1) */
+.suit-boot-emblem-reveal {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: reactorPulseCore 2s infinite ease-in-out;
+}
+.boot-insignia-svg {
+  width: 90px;
+  height: 90px;
+}
+.boot-glow-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--reactor-cyan);
+  box-shadow: 0 0 16px var(--reactor-cyan);
+  margin-top: 0.5rem;
+}
+
+/* Connecting Circuit Lines */
+.suit-circuit-lines-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 8;
+}
+
+.circuit-trace {
+  stroke: rgba(86, 231, 255, 0.12);
+  stroke-width: 1.5;
+  stroke-dasharray: 6 6;
+  transition: all 0.3s ease;
+}
+
+.circuit-trace.active {
+  stroke: url(#traceGradActive);
+  stroke-width: 2.5;
+  stroke-dasharray: none;
+  filter: drop-shadow(0 0 8px var(--reactor-cyan));
+}
+
+/* Holographic Panels Grid (Spatial 3D Arrangement) */
+.suit-holographic-panels-grid {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 15;
+}
+
+/* Individual Holographic Panel Card */
+.holo-nav-panel {
+  position: absolute;
+  width: 268px;
+  background: rgba(17, 24, 35, 0.75);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  pointer-events: auto;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease,
+              box-shadow 0.3s ease,
+              opacity 0.4s ease;
+  overflow: hidden;
+}
+
+.holo-nav-panel:hover,
+.holo-nav-panel:focus-visible {
+  transform: translateY(-4px) scale(1.03);
+  border-color: var(--accent-color);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.8), 0 0 24px rgba(86, 231, 255, 0.25);
+  outline: none;
+}
+
+/* Holographic Sweep Line */
+.holo-scan-sweep {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg, 
+    transparent 0%, 
+    rgba(86, 231, 255, 0.15) 50%, 
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  pointer-events: none;
+}
+.holo-nav-panel:hover .holo-scan-sweep {
+  animation: scanSweep 1.2s infinite;
+}
+
+@keyframes scanSweep {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+
+.holo-panel-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.68rem;
+  border-bottom: 1px solid rgba(86, 231, 255, 0.1);
+  padding-bottom: 0.45rem;
+}
+
+.holo-nav-code {
+  font-weight: 700;
+  color: var(--accent-color);
+  letter-spacing: 0.08em;
+}
+
+.holo-indicator-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.holo-sys-label {
+  color: var(--text-dim);
+}
+
+.holo-panel-body {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+.holo-icon-box {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  background: rgba(86, 231, 255, 0.08);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--accent-color);
+  transition: all 0.2s ease;
+}
+.holo-nav-panel:hover .holo-icon-box {
+  background: var(--accent-color);
+  color: #030508;
+  box-shadow: 0 0 16px var(--accent-color);
+}
+
+.holo-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.holo-title {
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.holo-desc {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.holo-panel-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  padding-top: 0.45rem;
+  border-top: 1px dashed rgba(86, 231, 255, 0.1);
+}
+
+.holo-nav-panel:hover .holo-panel-footer {
+  color: var(--accent-color);
+}
+
+.holo-arrow {
+  transition: transform 0.2s ease;
+}
+.holo-nav-panel:hover .holo-arrow {
+  transform: translateX(4px);
+}
+
+/* Spatial Positioning of the 8 Panels (Desktop Holographic Orbit) */
+.pos-left-top {
+  top: 13%;
+  left: 3.5%;
+}
+.pos-left-mid {
+  top: 40%;
+  left: 2%;
+}
+.pos-left-bottom {
+  top: 67%;
+  left: 3.5%;
+}
+
+.pos-right-top {
+  top: 13%;
+  right: 3.5%;
+}
+.pos-right-mid {
+  top: 40%;
+  right: 2%;
+}
+.pos-right-bottom {
+  top: 67%;
+  right: 3.5%;
+}
+
+.pos-bottom-left {
+  bottom: 7%;
+  left: 24.5%;
+}
+.pos-bottom-right {
+  bottom: 7%;
+  right: 24.5%;
+}
+
+/* Phase 5 Transition States */
+.holo-nav-panel.selected-activating {
+  transform: translate(-50%, -50%) scale(1.4) !important;
+  top: 50% !important;
+  left: 50% !important;
+  right: auto !important;
+  bottom: auto !important;
+  z-index: 100 !important;
+  background: rgba(7, 10, 16, 0.95);
+  border-color: var(--reactor-cyan);
+  box-shadow: 0 0 80px rgba(86, 231, 255, 0.6);
+  opacity: 1;
+}
+
+.holo-nav-panel.fading-out {
+  opacity: 0 !important;
+  transform: scale(0.8) !important;
+  pointer-events: none;
+}
+
+/* Responsive Spatial Layout (Tablet & Mobile) */
+@media (max-width: 1400px) {
+  .holo-nav-panel {
+    width: 250px;
+    padding: 0.9rem 1rem;
+  }
+  .pos-left-top { top: 12%; left: 3%; }
+  .pos-left-mid { top: 40%; left: 2%; }
+  .pos-left-bottom { top: 68%; left: 3%; }
+
+  .pos-right-top { top: 12%; right: 3%; }
+  .pos-right-mid { top: 40%; right: 2%; }
+  .pos-right-bottom { top: 68%; right: 3%; }
+
+  .pos-bottom-center { bottom: 6%; left: 32%; }
+  .pos-bottom-right { bottom: 6%; right: 32%; }
+}
+
+@media (max-width: 1050px) {
+  .cinematic-hud-wrapper {
+    overflow-y: auto;
+    align-items: flex-start;
+  }
+  .suit-central-reactor-wrap {
+    width: 340px;
+    height: 340px;
+    top: 220px;
+  }
+  .suit-circuit-lines-svg {
+    display: none;
+  }
+  .suit-holographic-panels-grid {
+    position: relative;
+    inset: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 340px 1.5rem 3rem 1.5rem;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    pointer-events: auto;
+  }
+  .holo-nav-panel {
+    position: static;
+    width: 100%;
+  }
+  .suit-top-telemetry {
+    top: 16px;
+    left: 20px;
+    right: 20px;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 650px) {
+  .suit-holographic-panels-grid {
+    grid-template-columns: 1fr;
+    padding-top: 300px;
+  }
+  .suit-central-reactor-wrap {
+    width: 260px;
+    height: 260px;
+    top: 180px;
+  }
+  .hud-tele-left {
+    display: none;
+  }
+  .suit-top-telemetry {
+    justify-content: flex-end;
+  }
+  .visor-bracket {
+    display: none;
+  }
+}

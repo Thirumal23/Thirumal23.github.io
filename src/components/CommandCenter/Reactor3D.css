@@ -1,0 +1,213 @@
+/**
+ * Reactor3D CSS - Styling for the multi-layer Arc Reactor Intelligence Core
+ */
+
+.reactor-3d-canvas-wrap {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  background: radial-gradient(circle at center, rgba(86, 231, 255, 0.08) 0%, rgba(7, 10, 16, 0.6) 70%, transparent 100%);
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  transition: all 0.3s ease;
+}
+
+.reactor-3d-canvas-wrap.fullscreen-active {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  background: #030508;
+  border-radius: 0;
+}
+
+/* 3D Orbit Node Labels (HTML Overlays) */
+.r3d-node-label {
+  background: rgba(7, 10, 16, 0.88);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.35rem 0.65rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+  pointer-events: auto;
+  user-select: none;
+  min-width: 90px;
+  max-width: 170px;
+}
+
+.r3d-node-label.hovered {
+  border-color: var(--reactor-cyan);
+  background: rgba(14, 22, 34, 0.95);
+  box-shadow: 0 6px 24px rgba(86, 231, 255, 0.25);
+  transform: translateY(-4px) scale(1.08);
+}
+
+.r3d-node-label.featured {
+  border-color: rgba(255, 180, 92, 0.5);
+}
+
+.r3d-node-label.featured.hovered {
+  border-color: var(--gold-accent);
+  box-shadow: 0 6px 24px rgba(255, 180, 92, 0.3);
+}
+
+.r3d-label-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.62rem;
+  color: var(--text-dim);
+}
+
+.r3d-code {
+  color: var(--gold-accent);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.r3d-status-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--status-success);
+  box-shadow: 0 0 6px var(--status-success);
+}
+
+.r3d-title {
+  font-size: 0.72rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.r3d-sub-hover {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-top: 0.25rem;
+  padding-top: 0.25rem;
+  border-top: 1px dashed rgba(86, 231, 255, 0.2);
+  font-size: 0.62rem;
+  color: var(--text-muted);
+}
+
+.r3d-inspect-btn {
+  color: var(--reactor-cyan);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+/* Tactical HUD Controls Bar at Bottom of 3D Canvas */
+.reactor-tactical-controls {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.reactor-ctrl-group {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  pointer-events: auto;
+}
+
+.btn-reactor-ctrl {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.65rem;
+  background: rgba(14, 22, 34, 0.85);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.2s ease;
+}
+
+.btn-reactor-ctrl:hover,
+.btn-reactor-ctrl.active {
+  background: var(--reactor-cyan-soft);
+  border-color: var(--reactor-cyan);
+  color: var(--reactor-cyan);
+}
+
+.btn-reactor-ctrl.btn-reactor-voice {
+  border-color: rgba(255, 180, 92, 0.4);
+  color: var(--gold-accent);
+}
+
+.btn-reactor-ctrl.btn-reactor-voice:hover {
+  background: rgba(255, 180, 92, 0.15);
+  border-color: var(--gold-accent);
+}
+
+/* Telemetry Corner Indicators */
+.reactor-corner-telemetry {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.35rem 0.65rem;
+  background: rgba(7, 10, 16, 0.75);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  font-size: 0.64rem;
+  backdrop-filter: blur(8px);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.reactor-corner-telemetry.top-left {
+  top: 12px;
+  left: 12px;
+}
+
+.reactor-corner-telemetry.top-right {
+  top: 12px;
+  right: 12px;
+  text-align: right;
+}
+
+.reactor-corner-telemetry.bottom-left {
+  bottom: 48px;
+  left: 12px;
+}
+
+.reactor-corner-telemetry .telemetry-label {
+  color: var(--text-dim);
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+}
+
+@media (max-width: 900px) {
+  .reactor-3d-canvas-wrap {
+    height: 420px;
+  }
+  .reactor-corner-telemetry.bottom-left {
+    display: none;
+  }
+  .reactor-tactical-controls {
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+}

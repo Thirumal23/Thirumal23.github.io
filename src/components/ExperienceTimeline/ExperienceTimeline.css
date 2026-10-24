@@ -1,0 +1,423 @@
+/* Experience, Education & Recognition Stylesheet */
+
+.exp-timeline-container {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 1rem 1.25rem 3rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.exp-header-card {
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.exp-header-left {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.exp-icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-sm);
+  background: var(--reactor-cyan-soft);
+  border: 1px solid var(--border-bright);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exp-tag-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.72rem;
+  margin-bottom: 0.2rem;
+}
+
+.exp-sub {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  max-width: 750px;
+  margin-top: 0.2rem;
+}
+
+/* Tabs Bar */
+.exp-tabs-bar {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.exp-tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(7, 10, 16, 0.6);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  padding: 0.5rem 0.95rem;
+  border-radius: 3px;
+  font-size: 0.72rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.exp-tab-btn:hover {
+  color: var(--reactor-cyan);
+  border-color: var(--border-bright);
+}
+
+.exp-tab-btn.active {
+  background: var(--reactor-cyan-soft);
+  border-color: var(--reactor-cyan);
+  color: var(--reactor-cyan);
+}
+
+/* Experience Internships */
+.exp-timeline-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.exp-card {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.exp-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 1rem;
+}
+
+.exp-role {
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  margin: 0.2rem 0;
+}
+
+.exp-org {
+  font-size: 0.95rem;
+  color: var(--reactor-cyan);
+  font-weight: 500;
+}
+
+.exp-meta-badge {
+  display: flex;
+  gap: 1.25rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.exp-contributions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.list-title {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  letter-spacing: 0.06em;
+}
+
+.contribution-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+}
+
+.contribution-row p {
+  font-size: 0.84rem;
+  color: var(--text-primary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.exp-skills-applied {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  font-size: 0.72rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--border-subtle);
+}
+
+.skills-applied-label {
+  color: var(--text-dim);
+}
+
+.skill-tag {
+  background: rgba(86, 231, 255, 0.08);
+  border: 1px solid var(--border-subtle);
+  color: var(--reactor-cyan);
+  padding: 0.15rem 0.45rem;
+  border-radius: 3px;
+}
+
+/* Education Grid */
+.education-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.edu-card {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.edu-header {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.edu-title {
+  font-size: 1.15rem;
+  color: var(--text-primary);
+  margin-bottom: 0.2rem;
+}
+
+.edu-inst {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.edu-status {
+  font-size: 0.72rem;
+  color: var(--gold-accent);
+  margin-top: 0.25rem;
+}
+
+.cgpa-highlight-box {
+  background: rgba(7, 10, 16, 0.6);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cgpa-score {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+
+.cgpa-val {
+  font-size: 2.2rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.cgpa-scale {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+}
+
+.sem-gpa-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.65rem;
+}
+
+.sem-box {
+  background: rgba(17, 24, 35, 0.7);
+  border: 1px solid var(--border-subtle);
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+}
+
+.sem-name {
+  color: var(--text-muted);
+}
+.sem-val {
+  font-weight: bold;
+}
+
+.edu-disclaimer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  margin-top: auto;
+}
+
+.schooling-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.school-row {
+  padding: 0.75rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.school-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.school-std {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.school-stream {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.school-score {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.conference-box {
+  padding: 1.15rem;
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  background: rgba(255, 180, 92, 0.05);
+  border-color: rgba(255, 180, 92, 0.3);
+}
+
+.conf-top {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+}
+
+.conf-h {
+  font-size: 0.92rem;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.conf-p {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* Hackathons Grid */
+.hackathons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.25rem;
+}
+
+.hackathon-card {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.hack-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.72rem;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 0.5rem;
+}
+
+.hack-award {
+  font-weight: 700;
+}
+
+.hack-name {
+  font-size: 1.05rem;
+  color: var(--text-primary);
+  margin: 0.1rem 0;
+}
+
+.hack-desc {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+/* Certifications Grid */
+.certifications-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.cert-card {
+  padding: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.cert-top {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+}
+
+.cert-title {
+  font-size: 0.92rem;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.35;
+}
+
+.cert-footer {
+  margin-top: auto;
+  font-size: 0.65rem;
+  padding-top: 0.5rem;
+  border-top: 1px dashed var(--border-subtle);
+}
+
+@media (max-width: 900px) {
+  .education-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,176 @@
+/* Terminal Stylesheet */
+
+.terminal-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem 1.25rem 3rem 1.25rem;
+}
+
+.terminal-frame {
+  display: flex;
+  flex-direction: column;
+  height: 680px;
+  background: rgba(7, 10, 16, 0.95);
+  border: 1px solid var(--border-bright);
+  border-radius: var(--radius-md);
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(86, 231, 255, 0.1);
+  overflow: hidden;
+}
+
+.terminal-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 1rem;
+  background: var(--bg-titanium);
+  border-bottom: 1px solid var(--border-subtle);
+  font-size: 0.75rem;
+}
+
+.term-dots {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.term-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.term-dot.red { background: #ff5f56; }
+.term-dot.yellow { background: #ffbd2e; }
+.term-dot.green { background: #27c93f; }
+
+.term-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-muted);
+}
+
+.btn-term-clear {
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-dim);
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.68rem;
+  transition: all var(--transition-fast);
+}
+
+.btn-term-clear:hover {
+  color: var(--reactor-cyan);
+  border-color: var(--reactor-cyan);
+}
+
+/* Quick Pills */
+.terminal-quick-pills {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(17, 24, 35, 0.5);
+  border-bottom: 1px solid var(--border-subtle);
+  overflow-x: auto;
+}
+
+.pills-label {
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  flex-shrink: 0;
+}
+
+.quick-pill {
+  background: rgba(7, 10, 16, 0.7);
+  border: 1px solid var(--border-subtle);
+  color: var(--reactor-cyan);
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.7rem;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
+}
+
+.quick-pill:hover {
+  background: var(--reactor-cyan);
+  color: #070A10;
+}
+
+/* Terminal Body */
+.terminal-body {
+  flex: 1;
+  padding: 1.25rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  cursor: text;
+}
+
+.term-line-block.user .term-line {
+  color: var(--reactor-cyan);
+  font-weight: 600;
+}
+
+.term-line-block.system .term-line {
+  color: var(--gold-accent);
+}
+
+.term-line-block.output .term-line {
+  color: var(--text-primary);
+}
+
+/* Command Prompt Input */
+.terminal-input-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--bg-titanium);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.prompt-lead {
+  color: var(--status-success);
+  font-weight: bold;
+  font-size: 0.85rem;
+}
+
+.terminal-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.terminal-input:focus {
+  outline: none;
+}
+
+.btn-prompt-enter {
+  background: var(--reactor-cyan-soft);
+  border: 1px solid var(--border-subtle);
+  color: var(--reactor-cyan);
+  padding: 0.35rem 0.55rem;
+  border-radius: 3px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.btn-prompt-enter:hover {
+  background: var(--reactor-cyan);
+  color: #070A10;
+}

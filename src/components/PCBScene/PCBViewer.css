@@ -1,0 +1,339 @@
+/* 3D PCB Lab Styling */
+
+.pcb-lab-container {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 1rem 1.25rem 3rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.pcb-header-card {
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.pcb-header-left {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.pcb-icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-sm);
+  background: var(--reactor-cyan-soft);
+  border: 1px solid var(--border-bright);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pcb-tag-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.72rem;
+  margin-bottom: 0.2rem;
+}
+
+.pcb-desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  max-width: 750px;
+  margin-top: 0.2rem;
+}
+
+/* Project Selector Bar */
+.pcb-project-selector-bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1.25rem;
+  background: var(--bg-titanium);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  flex-wrap: wrap;
+}
+
+.selector-title {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  letter-spacing: 0.06em;
+  flex-shrink: 0;
+}
+
+.pcb-pills-row {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  overflow-x: auto;
+  padding-bottom: 0.2rem;
+  flex: 1;
+}
+
+.pcb-project-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.65rem;
+  background: rgba(7, 10, 16, 0.6);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+}
+
+.pcb-project-pill:hover {
+  border-color: var(--reactor-cyan);
+  color: var(--text-primary);
+}
+
+.pcb-project-pill.active {
+  background: var(--reactor-cyan-soft);
+  border-color: var(--reactor-cyan);
+  color: var(--reactor-cyan);
+  font-weight: 600;
+}
+
+.pill-code {
+  color: var(--gold-accent);
+  font-weight: bold;
+}
+
+.active-board-badge {
+  margin-left: auto;
+  font-size: 0.68rem;
+  color: var(--gold-accent);
+  background: rgba(255, 180, 92, 0.1);
+  border: 1px solid rgba(255, 180, 92, 0.3);
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+}
+.pcb-workspace-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 1.25rem;
+  align-items: stretch;
+}
+
+.pcb-viewport-panel {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 600px;
+}
+
+.pcb-layer-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.65rem 1rem;
+  background: rgba(7, 10, 16, 0.6);
+  border-bottom: 1px solid var(--border-subtle);
+  flex-wrap: wrap;
+  font-size: 0.72rem;
+}
+
+.layer-title {
+  color: var(--text-dim);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.layer-chip {
+  padding: 0.25rem 0.6rem;
+  border-radius: 3px;
+  border: 1px solid var(--border-subtle);
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.layer-chip.active {
+  background: var(--reactor-cyan-soft);
+  border-color: var(--reactor-cyan);
+  color: var(--reactor-cyan);
+}
+
+.pcb-canvas-holder {
+  flex: 1;
+  position: relative;
+  background: radial-gradient(circle at center, rgba(86, 231, 255, 0.03) 0%, transparent 80%);
+}
+
+.pcb-2d-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.pcb-2d-svg {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+}
+
+.pcb-hint-overlay {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  background: rgba(7, 10, 16, 0.85);
+  border: 1px solid var(--border-subtle);
+  padding: 0.35rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  text-align: center;
+  pointer-events: none;
+}
+
+/* 3D Label */
+.pcb-label-chip {
+  background: rgba(7, 10, 16, 0.85);
+  border: 1px solid var(--border-bright);
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+  font-size: 0.65rem;
+  color: #ffffff;
+  font-weight: bold;
+}
+.pcb-label-chip.active {
+  border-color: var(--reactor-cyan);
+  background: var(--reactor-cyan);
+  color: #070A10;
+}
+
+/* Inspector Panel */
+.pcb-inspector-panel {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.inspector-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 0.65rem;
+}
+
+.inspector-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.inspector-top-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.ref-tag {
+  background: var(--reactor-cyan-soft);
+  border: 1px solid var(--border-bright);
+  color: var(--reactor-cyan);
+  font-size: 0.85rem;
+  font-weight: bold;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.comp-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.spec-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  padding: 0.35rem 0;
+  border-bottom: 1px dashed var(--border-subtle);
+}
+
+.spec-key {
+  color: var(--text-dim);
+}
+
+.comp-detail-box {
+  background: rgba(7, 10, 16, 0.5);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem;
+}
+
+.comp-desc {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+.comp-specs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.specs-list-title {
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  letter-spacing: 0.06em;
+  margin-bottom: 0.2rem;
+}
+
+.spec-bullet-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--text-primary);
+}
+
+.kicad-verified-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 180, 92, 0.08);
+  border: 1px solid rgba(255, 180, 92, 0.3);
+  padding: 0.65rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.7rem;
+  color: var(--gold-accent);
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 1050px) {
+  .pcb-workspace-grid {
+    grid-template-columns: 1fr;
+  }
+  .pcb-viewport-panel {
+    height: 480px;
+  }
+}
